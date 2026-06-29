@@ -3,7 +3,7 @@ import re
 import aiofiles
 import aiohttp
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
-from youtubesearchpython.future import VideosSearch
+from youtubesearchpython.future import Video
 from config import YOUTUBE_IMG_URL
 
 # Constants
@@ -93,8 +93,8 @@ async def get_thumb(videoid, user_id=None):
     # Draw details
     draw = ImageDraw.Draw(bg)
     try:
-        title_font = ImageFont.truetype("VIVAANXMUSIC/assets/thumb/font2.ttf", 32)
-        regular_font = ImageFont.truetype("VIVAANXMUSIC/assets/thumb/font.ttf", 18)
+        title_font = ImageFont.truetype("VivaanXmusic/assets/thumb/font2.ttf", 32)
+        regular_font = ImageFont.truetype("VivaanXmusic/assets/thumb/font.ttf", 18)
     except OSError:
         title_font = regular_font = ImageFont.load_default()
 
