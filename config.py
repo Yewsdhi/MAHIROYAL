@@ -22,8 +22,8 @@ YT_API_KEY = getenv("YT_API_KEY" , None ) ## Your API key like: xbit_10000000xx0
 
 WORKER_FALLBACK_API_KEY = getenv("WORKER_FALLBACK_API_KEY", None)
 
-DURATION_LIMIT = int(getenv("DURATION_LIMIT", 14400)) # 5 hours
-VIDEO_DURATION_LIMIT = int(getenv("VIDEO_DURATION_LIMIT", 14400)) # 5 hours
+DURATION_LIMIT = int(getenv("DURATION_LIMIT", 20000)) # 5 hours
+VIDEO_DURATION_LIMIT = int(getenv("VIDEO_DURATION_LIMIT", 20000)) # 5 hours
 
 # Chat id of a group for logging bot's activities
 LOGGER_ID = int(getenv("LOGGER_ID", -1002715747653))
@@ -54,8 +54,8 @@ SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/about_Maahi_XD")
 SUPPORT_CHAT = getenv("SUPPORT_CHAT", "https://t.me/ll_DPZ_WORLDS_lll")
 
 # Set this to True if you want the assistant to automatically leave chats after an interval
-AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", False))
-ASSISTANT_LEAVE_TIME = int(getenv("ASSISTANT_LEAVE_TIME",  6400))
+AUTO_LEAVING_ASSISTANT = bool(getenv("AUTO_LEAVING_ASSISTANT", True))
+ASSISTANT_LEAVE_TIME = int(getenv("ASSISTANT_LEAVE_TIME",  18000))
 
 
 # Get this credentials from https://developer.spotify.com/dashboard
