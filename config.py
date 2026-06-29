@@ -30,7 +30,9 @@ LOGGER_ID = int(getenv("LOGGER_ID", -1002715747653))
 
 # Get this value from @FallenxBot on Telegram by /id
 OWNER_ID = int(getenv("OWNER_ID", 6221699441))
-
+OWNER_LINK = "https://t.me/II_ROYALENTRY1128_II"
+# Ya agar username nahi hai:
+# OWNER_LINK = "tg://user?id=123456789"
 SUDO_USERS = list(map(int, getenv("SUDO_USERS", str(OWNER_ID)).split()))
 
 ## Fill these variables if you're deploying on heroku.
