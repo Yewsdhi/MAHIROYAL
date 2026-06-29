@@ -88,6 +88,13 @@ def stream_markup_timer(_, chat_id, played, dur):
             ),
         ],
         [_add_to_group_button()],
+        [
+        InlineKeyboardButton(
+            text="✘ Close",
+            callback_data="close",
+            style=ButtonStyle.DANGER,
+        ),
+    ],
     ]
     return buttons
 
@@ -106,6 +113,13 @@ def stream_markup(_, chat_id):
             ),
         ],
         [_add_to_group_button()],
+        [
+        InlineKeyboardButton(
+            text="✘ Close",
+            callback_data="close",
+            style=ButtonStyle.DANGER,
+        ),
+    ],
     ]
     return buttons
 
