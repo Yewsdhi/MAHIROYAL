@@ -13,7 +13,17 @@ def start_panel(_):
                 url=f"https://t.me/{app.username}?startgroup=true",
                 style=ButtonStyle.PRIMARY,
             ),
-            InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT),
+            InlineKeyboardButton(
+                text=_["S_B_2"],
+                url=config.SUPPORT_CHAT,
+            ),
+        ],
+        [
+            InlineKeyboardButton(
+                text="👑 Owner",
+                url=config.OWNER_LINK,
+                style=ButtonStyle.SUCCESS,
+            ),
         ],
     ]
     return buttons
@@ -37,13 +47,23 @@ def private_panel(_):
         ],
         [
             InlineKeyboardButton(
+                text="👑 Owner",
+                url=config.OWNER_LINK,
+                style=ButtonStyle.SUCCESS,
+            ),
+        ],
+        [
+            InlineKeyboardButton(
                 text=_["S_B_5"],
                 url=config.SUPPORT_CHANNEL,
                 style=ButtonStyle.SUCCESS,
             ),
         ],
         [
-            InlineKeyboardButton(text=_["S_B_2"], url=config.SUPPORT_CHAT),
+            InlineKeyboardButton(
+                text=_["S_B_2"],
+                url=config.SUPPORT_CHAT,
+            ),
         ],
     ]
     return buttons
