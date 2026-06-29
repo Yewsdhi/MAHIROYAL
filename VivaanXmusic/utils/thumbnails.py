@@ -13,8 +13,8 @@ class Thumbnail:
         self.rect = (914, 514)
         self.fill = (255, 255, 255)
         try:
-            self.font1 = ImageFont.truetype("KartikMusic/helpers/Raleway-Bold.ttf", 30)
-            self.font2 = ImageFont.truetype("KartikMusic/helpers/Inter-Light.ttf", 30)
+            self.font1 = ImageFont.truetype("VivaanXmusic/assets/Raleway-Bold.ttf", 30)
+            self.font2 = ImageFont.truetype("VivaanXmusic/assets/Inter-Light.ttf", 30)
         except Exception:
             self.font1 = ImageFont.load_default()
             self.font2 = ImageFont.load_default()
@@ -27,7 +27,7 @@ class Thumbnail:
         if self.session:
             await self.session.close()
 
-    async def save_thumb(self, output_path: str, url: str) -> str:
+    async def get_thumb(self, output_path: str, url: str) -> str:
         async with self.session.get(url) as resp:
             with open(output_path, "wb") as f:
                 f.write(await resp.read())
