@@ -93,8 +93,8 @@ async def get_thumb(videoid, user_id=None):
     # Draw details
     draw = ImageDraw.Draw(bg)
     try:
-        title_font = ImageFont.truetype("VivaanXmusic/assets/thumb/font2.ttf", 32)
-        regular_font = ImageFont.truetype("VivaanXmusic/assets/thumb/font.ttf", 18)
+        title_font = ImageFont.truetype("VivaanXmusic/assets/font2.ttf", 32)
+        regular_font = ImageFont.truetype("VivaanXmusic/assets/font.ttf", 18)
     except OSError:
         title_font = regular_font = ImageFont.load_default()
 
@@ -116,7 +116,7 @@ async def get_thumb(videoid, user_id=None):
     draw.text((BAR_X + BAR_TOTAL_LEN - (90 if is_live else 60), BAR_Y + 15), end_text, fill="red" if is_live else "black", font=regular_font)
 
     # Icons
-    icons_path = "VivaanXmusic/assets/thumb/play_icons.png"
+    icons_path = "VivaanXmusic/assets/play_icons.png"
     if os.path.isfile(icons_path):
         ic = Image.open(icons_path).resize((ICONS_W, ICONS_H)).convert("RGBA")
         r, g, b, a = ic.split()
