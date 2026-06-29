@@ -35,7 +35,7 @@ def parse_flags(text: str):
 async def broadcast_to_targets(client, targets, query, y=None, x=None, pin=False, pinloud=False):
     sent = 0
     pinned = 0
-    footer = "\n\n🔊 Broadcasted by VivaanXmusic"
+    footer = "\n\n"
     for target_id in targets:
         try:
             if x and y:
