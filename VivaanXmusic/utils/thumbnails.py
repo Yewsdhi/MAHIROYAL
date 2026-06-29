@@ -4,8 +4,8 @@ import os
 import aiohttp
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
 
-from KartikMusic import config
-from KartikMusic.helpers import Track
+from VivaanXmusic import config
+from VivaanXmusic.helpers import Track
 
 
 class Thumbnail:
