@@ -26,6 +26,5 @@ tgcrypto;sys_platform != "win32"
 unidecode
 uvloop;sys_platform != "win32"
 yt-dlp>=2026.06.01
-yt-dlp
 youtube-search
 git+https://github.com/SkyBotsDeveloper/youtube-search-python.git
