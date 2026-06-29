@@ -56,7 +56,7 @@ def get_contrasting_color(bg_color):
     
     # Return white for dark backgrounds, dark for light backgrounds
     return (255, 255, 255) if luminance < 128 else (50, 50, 50)
-async def get_thumb(videoid):
+async def get_thumb(videoid,user_id):
     final_path = f"cache/{videoid}.png"
     if os.path.isfile(final_path):
         return final_path
