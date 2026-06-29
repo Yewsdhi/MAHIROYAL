@@ -19,12 +19,8 @@ MONGO_DB_URI = getenv("MONGO_DB_URI", None)
 # Vars For API End Pont.
 YTPROXY_URL = getenv("YTPROXY_URL", 'https://tgapi.xbitcode.com') ## xBit Music Endpoint.
 YT_API_KEY = getenv("YT_API_KEY" , None ) ## Your API key like: xbit_10000000xx0233 Get from  https://t.me/tgmusic_apibot
-
 )
 WORKER_FALLBACK_API_KEY = getenv("WORKER_FALLBACK_API_KEY", None)
-
-#API_URL = getenv("API_URL", 'https://api.thequickearn.xyz') #youtube song url
-#API_KEY = getenv("API_KEY", '30DxNexGenBotsc0db7b') # 
 
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", 14400)) # 5 hours
 VIDEO_DURATION_LIMIT = int(getenv("VIDEO_DURATION_LIMIT", 14400)) # 5 hours
