@@ -32,10 +32,10 @@ from VivaanXmusic.utils.database import (
     remove_active_video_chat,
     set_loop,
 )
-from AnonXMusic.utils.exceptions import AssistantErr
-from AnonXMusic.utils.formatters import check_duration, seconds_to_min, speed_converter
-from AnonXMusic.utils.inline.play import stream_markup
-from AnonXMusic.utils.thumbnails import get_thumb
+from VivaanXmusic.utils.exceptions import AssistantErr
+from VivaanXmusic.utils.formatters import check_duration, seconds_to_min, speed_converter
+from VivaanXmusic.utils.inline.play import stream_markup
+from VivaanXmusic.utils.thumbnails import get_thumb
 from strings import get_string
 from AnonXMusic.platforms.Youtube import cookie_txt_file
 
