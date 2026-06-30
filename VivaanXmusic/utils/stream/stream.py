@@ -32,7 +32,7 @@ async def stream(
     if not result:
         return
     if forceplay:
-        await SHUKLA.force_stop_stream(chat_id)
+        await Siddu.force_stop_stream(chat_id)
     if streamtype == "playlist":
         msg = f"{_['play_19']}\n\n"
         count = 0
@@ -79,7 +79,7 @@ async def stream(
                     )
                 except:
                     raise AssistantErr(_["play_14"])
-                await SHUKLA.join_call(
+                await Siddu.join_call(
                     chat_id,
                     original_chat_id,
                     file_path,
@@ -98,7 +98,7 @@ async def stream(
                     "video" if video else "audio",
                     forceplay=forceplay,
                 )
-                img = await get_thumb(vidid)
+                img = await get_thumb(vidid,user_id)
                 button = stream_markup(_, chat_id)
                 run = await app.send_photo(
                     original_chat_id,
@@ -116,7 +116,7 @@ async def stream(
         if count == 0:
             return
         else:
-            link = await SHUKLABin(msg)
+            link = await SidduBin(msg)
             lines = msg.count("\n")
             if lines >= 17:
                 car = os.linesep.join(msg.split(os.linesep)[:17])
@@ -165,7 +165,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await SHUKLA.join_call(
+            await Siddu.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -184,7 +184,7 @@ async def stream(
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid)
+            img = await get_thumb(vidid,user_id)
             button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
@@ -225,7 +225,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await SHUKLA.join_call(chat_id, original_chat_id, file_path, video=None)
+            await Siddu.join_call(chat_id, original_chat_id, file_path, video=None)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -277,7 +277,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await SHUKLA.join_call(chat_id, original_chat_id, file_path, video=status)
+            await Siddu.join_call(chat_id, original_chat_id, file_path, video=status)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -333,7 +333,7 @@ async def stream(
             n, file_path = await YouTube.video(link)
             if n == 0:
                 raise AssistantErr(_["str_3"])
-            await SHUKLA.join_call(
+            await Siddu.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -352,7 +352,7 @@ async def stream(
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid)
+            img = await get_thumb(vidid,user_id)
             button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
@@ -391,7 +391,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await SHUKLA.join_call(
+            await Siddu.join_call(
                 chat_id,
                 original_chat_id,
                 link,
