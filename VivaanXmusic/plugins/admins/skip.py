@@ -8,8 +8,9 @@ from VivaanXmusic.misc import db
 from VivaanXmusic.utils.database import get_loop
 from VivaanXmusic.utils.decorators import AdminRightsCheck
 from VivaanXmusic.utils.inline import close_markup, stream_markup
+from VivaanXmusic.utils.stream.autoclear import auto_clean
 from VivaanXmusic.utils.thumbnails import get_thumb
-from config import BANNED_USERS,autoclean
+from config import BANNED_USERS
 
 
 @app.on_message(
@@ -37,8 +38,7 @@ async def skip(cli, message: Message, _, chat_id):
                             except:
                                 return await message.reply_text(_["admin_12"])
                             if popped:
-                                rem = popped["file"]
-                                autoclean.remove(rem)
+                                await auto_clean(popped)
                             if not check:
                                 try:
                                     await message.reply_text(
@@ -48,7 +48,7 @@ async def skip(cli, message: Message, _, chat_id):
                                         ),
                                         reply_markup=close_markup(_),
                                     )
-                                    await Anony.stop_stream(chat_id)
+                                    await Siddu.stop_stream(chat_id)
                                 except:
                                     return
                                 break
@@ -66,8 +66,7 @@ async def skip(cli, message: Message, _, chat_id):
         try:
             popped = check.pop(0)
             if popped:
-                rem = popped["file"]
-                autoclean.remove(rem)
+                await auto_clean(popped)
             if not check:
                 await message.reply_text(
                     text=_["admin_6"].format(
@@ -76,7 +75,7 @@ async def skip(cli, message: Message, _, chat_id):
                     reply_markup=close_markup(_),
                 )
                 try:
-                    return await Anony.stop_stream(chat_id)
+                    return await Siddu.stop_stream(chat_id)
                 except:
                     return
         except:
@@ -87,7 +86,7 @@ async def skip(cli, message: Message, _, chat_id):
                     ),
                     reply_markup=close_markup(_),
                 )
-                return await Anony.stop_stream(chat_id)
+                return await Siddu.stop_stream(chat_id)
             except:
                 return
     queued = check[0]["file"]
@@ -113,7 +112,7 @@ async def skip(cli, message: Message, _, chat_id):
         except:
             image = None
         try:
-            await Anony.skip_stream(chat_id, link, video=status, image=image)
+            await Siddu.skip_stream(chat_id, link, video=status, image=image)
         except:
             return await message.reply_text(_["call_6"])
         button = stream_markup(_, chat_id)
@@ -146,7 +145,7 @@ async def skip(cli, message: Message, _, chat_id):
         except:
             image = None
         try:
-            await Anony.skip_stream(chat_id, file_path, video=status, image=image)
+            await Siddu.skip_stream(chat_id, file_path, video=status, image=image)
         except:
             return await mystic.edit_text(_["call_6"])
         button = stream_markup(_, chat_id)
@@ -166,7 +165,7 @@ async def skip(cli, message: Message, _, chat_id):
         await mystic.delete()
     elif "index_" in queued:
         try:
-            await Anony.skip_stream(chat_id, videoid, video=status)
+            await Siddu.skip_stream(chat_id, videoid, video=status)
         except:
             return await message.reply_text(_["call_6"])
         button = stream_markup(_, chat_id)
@@ -188,7 +187,7 @@ async def skip(cli, message: Message, _, chat_id):
             except:
                 image = None
         try:
-            await Anony.skip_stream(chat_id, queued, video=status, image=image)
+            await Siddu.skip_stream(chat_id, queued, video=status, image=image)
         except:
             return await message.reply_text(_["call_6"])
         if videoid == "telegram":
