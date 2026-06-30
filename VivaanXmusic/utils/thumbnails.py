@@ -3,7 +3,7 @@ import re
 import aiofiles
 import aiohttp
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
-from ytSearch import VideosSearch, Playlist
+from youtubesearchpython import VideosSearch, Playlist
 from config import YOUTUBE_IMG_URL
 
 # Constants
