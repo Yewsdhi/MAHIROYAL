@@ -37,7 +37,7 @@ from VivaanXmusic.utils.formatters import check_duration, seconds_to_min, speed_
 from VivaanXmusic.utils.inline.play import stream_markup
 from VivaanXmusic.utils.thumbnails import get_thumb
 from strings import get_string
-from AnonXMusic.platforms.Youtube import cookie_txt_file
+from VivaanXmusic.platforms.Youtube import cookie_txt_file
 
 autoend = {}
 counter = {}
