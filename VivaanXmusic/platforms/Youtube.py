@@ -13,10 +13,10 @@ from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from youtubesearchpython.future import VideosSearch
-from VivaanXmusic import LOGGER
-from VivaanXmusic.utils.database import is_on_off
-from VivaanXmusic.utils.formatters import time_to_seconds
+from ytSearch import VideosSearch, Playlist
+from AnonXMusic import LOGGER
+from AnonXMusic.utils.database import is_on_off
+from AnonXMusic.utils.formatters import time_to_seconds
 from config import YT_API_KEY, YTPROXY_URL as YTPROXY
 
 logger = LOGGER(__name__)
@@ -528,7 +528,7 @@ class YouTubeAPI:
                     result = await download_with_requests(video_url, filepath, headers)
                     return result
                     
-               logger.error(f"API Error: {videoData.get('message', 'Unknown error')}")
+                logger.error(f"API Error: {videoData.get('message', 'Unknown error')}")
                 return None
                 
             except Exception as e:
@@ -592,4 +592,4 @@ class YouTubeAPI:
             direct = True
             downloaded_file = await audio_dl(vid_id)
         
-        return downloaded_file, direct 
+        return downloaded_file, direct
