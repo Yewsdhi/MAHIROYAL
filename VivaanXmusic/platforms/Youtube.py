@@ -10,10 +10,15 @@ import aiohttp
 
 API_URL = os.environ.get("SHRUTI_API_URL", "https://api.shrutibots.site")
 
-API_KEY = os.environ.get("SHRUTI_API_KEY", "ShrutiBotsAlSpfeG7JItQmuoxCqKd") ## Get This API KEY FROM TELEGRAM BOT USERNAME: @SHRUTIAPIBOT 
+API_KEY = os.environ.get(
+    "SHRUTI_API_KEY",
+    "ShrutiBotsAlSpfeG7JItQmuoxCqKd"
+)
 
 DOWNLOAD_DIR = "downloads"
 
+# Cookie file path
+cookie_txt_file = os.environ.get("COOKIE_FILE", "cookies.txt")
 
 def time_to_seconds(time):
     stringt = str(time)
