@@ -36,15 +36,12 @@ class SpotifyAPI:
             if "Various Artists" not in fetched:
                 info += fetched
         results = VideosSearch(info, limit=1)
-        result_items = (await results.next()).get("result", [])
-        if not result_items:
-            return False
-        result = result_items[0]
-        ytlink = result["link"]
-        title = result["title"]
-        vidid = result["id"]
-        duration_min = result["duration"]
-        thumbnail = result["thumbnails"][0]["url"].split("?")[0]
+        for result in (await results.next())["result"]:
+            ytlink = result["link"]
+            title = result["title"]
+            vidid = result["id"]
+            duration_min = result["duration"]
+            thumbnail = result["thumbnails"][0]["url"].split("?")[0]
         track_details = {
             "title": title,
             "link": ytlink,
