@@ -571,7 +571,7 @@ class YouTubeAPI:
 
         return title, duration_min, duration_sec, thumbnail, vidid
 
-    aasync def title(self, link: str, videoid: Union[bool, str] = None):
+    async def title(self, link: str, videoid: Union[bool, str] = None):
         if videoid:
             link = self.base + link
         link = self._prepare_lookup(link)
