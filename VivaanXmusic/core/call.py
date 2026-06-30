@@ -9,14 +9,15 @@ from pytgcalls import PyTgCalls
 from pytgcalls.exceptions import (
     NoActiveGroupCall,
 )
-from ntgcalls import TelegramServerError
+from ntgcalls import TelegramServerError, FFmpegError
 from pytgcalls.types import Update, StreamEnded
 from pytgcalls import filters as fl
 from pytgcalls.types import AudioQuality, VideoQuality
 from pytgcalls.types import MediaStream,ChatUpdate
+from pytgcalls.types.calls import GroupCallConfig
 
-from VivaanXmusic.utils.stream.autoclear import auto_clean
 import config
+from config import autoclean
 from VivaanXmusic import LOGGER, YouTube, app
 from VivaanXmusic.misc import db
 from VivaanXmusic.utils.database import (
@@ -31,12 +32,12 @@ from VivaanXmusic.utils.database import (
     remove_active_video_chat,
     set_loop,
 )
-from VivaanXmusic.utils.exceptions import AssistantErr
-from VivaanXmusic.utils.formatters import check_duration, seconds_to_min, speed_converter
-from VivaanXmusic.utils.inline.play import stream_markup
-from VivaanXmusic.utils.thumbnails import get_thumb
+from AnonXMusic.utils.exceptions import AssistantErr
+from AnonXMusic.utils.formatters import check_duration, seconds_to_min, speed_converter
+from AnonXMusic.utils.inline.play import stream_markup
+from AnonXMusic.utils.thumbnails import get_thumb
 from strings import get_string
-from VivaanXmusic.platforms.Youtube import cookie_txt_file
+from AnonXMusic.platforms.Youtube import cookie_txt_file
 
 autoend = {}
 counter = {}
@@ -51,7 +52,7 @@ async def _clear_(chat_id):
 class Call(PyTgCalls):
     def __init__(self):
         self.userbot1 = Client(
-            name="VivaanXAss1",
+            name="AnonXAss1",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING1),
@@ -61,7 +62,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot2 = Client(
-            name="VivaanXAss2",
+            name="AnonXAss2",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING2),
@@ -71,7 +72,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot3 = Client(
-            name="VivaanXAss3",
+            name="AnonXAss3",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING3),
@@ -81,7 +82,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot4 = Client(
-            name="VivaanXAss4",
+            name="AnonXAss4",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING4),
@@ -91,7 +92,7 @@ class Call(PyTgCalls):
             cache_duration=100,
         )
         self.userbot5 = Client(
-            name="VivaanXAss5",
+            name="AnonXAss5",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
             session_string=str(config.STRING5),
@@ -165,15 +166,17 @@ class Call(PyTgCalls):
                     vs = 0.68
                 if str(speed) == str("2.0"):
                     vs = 0.5
-                proc = await asyncio.create_subprocess_exec(
-                    "ffmpeg",
-                    "-i",
-                    f"{file_path}",
-                    "-filter:v",
-                    f"setpts={vs}*PTS",
-                    "-filter:a",
-                    f"atempo={speed}",
-                    f"{out}",
+                proc = await asyncio.create_subprocess_shell(
+                    cmd=(
+                        "ffmpeg "
+                        "-i "
+                        f"{file_path} "
+                        "-filter:v "
+                        f"setpts={vs}*PTS "
+                        "-filter:a "
+                        f"atempo={speed} "
+                        f"{out}"
+                    ),
                     stdin=asyncio.subprocess.PIPE,
                     stderr=asyncio.subprocess.PIPE,
                 )
@@ -296,6 +299,11 @@ class Call(PyTgCalls):
                 link,
                 audio_parameters=AudioQuality.HIGH,video_parameters=VideoQuality.SD_480p
                 )
+            # stream = AudioVideoPiped(
+            #     link,
+            #     audio_parameters=HighQualityAudio(),
+            #     video_parameters=MediumQualityVideo(),
+            # )
         else:
             stream = (
                 MediaStream(
@@ -310,12 +318,21 @@ class Call(PyTgCalls):
         try:
             await assistant.play(
                 chat_id,
-                stream
+                stream,
+                config=GroupCallConfig(auto_start=False),
             )
+            # await assistant.join_group_call(
+            #     chat_id,
+            #     stream,
+            #     stream_type=StreamType().pulse_stream,
+            # )
         except NoActiveGroupCall:
             raise AssistantErr(_["call_8"])
-        except AlreadyJoinedError:
-            raise AssistantErr(_["call_9"])
+        except FFmpegError:
+            LOGGER(__name__).warning("ffmpeg/ffprobe is not installed on the system")
+            raise AssistantErr(
+                "⚠️ <b>ffmpeg</b> is not installed on this server.\n\nPlease install it using: <code>apt install ffmpeg</code>"
+            )
         except TelegramServerError:
             raise AssistantErr(_["call_10"])
         await add_active_chat(chat_id)
@@ -339,7 +356,8 @@ class Call(PyTgCalls):
                 loop = loop - 1
                 await set_loop(chat_id, loop)
             if popped:
-                await auto_clean(popped)
+                rem = popped["file"]
+                autoclean.remove(rem)
             if not check:
                 await _clear_(chat_id)
                 return await client.leave_call(chat_id)
