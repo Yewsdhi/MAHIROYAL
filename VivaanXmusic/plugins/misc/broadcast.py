@@ -4,17 +4,17 @@ from pyrogram import filters
 from pyrogram.enums import ChatMembersFilter
 from pyrogram.errors import FloodWait
 
-from SHUKLAMUSIC import app
-from SHUKLAMUSIC.misc import SUDOERS
-from SHUKLAMUSIC.utils.database import (
+from VivaanXmusic import app
+from VivaanXmusic.misc import SUDOERS
+from VivaanXmusic.utils.database import (
     get_active_chats,
     get_authuser_names,
     get_client,
     get_served_chats,
     get_served_users,
 )
-from SHUKLAMUSIC.utils.decorators.language import language
-from SHUKLAMUSIC.utils.formatters import alpha_to_int
+from VivaanXmusic.utils.decorators.language import language
+from VivaanXmusic.utils.formatters import alpha_to_int
 from config import adminlist
 
 IS_BROADCASTING = False
