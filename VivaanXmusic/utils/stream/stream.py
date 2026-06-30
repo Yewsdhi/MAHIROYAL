@@ -6,7 +6,7 @@ from pyrogram.types import InlineKeyboardMarkup
 
 import config
 from VivaanXmusic import Carbon, YouTube, app
-from VivaanXmusic.core.call import SHUKLA
+from VivaanXmusic.core.call import Siddu
 from VivaanXmusic.misc import db
 from VivaanXmusic.utils.database import add_active_video_chat, is_active_chat
 from VivaanXmusic.utils.exceptions import AssistantErr
