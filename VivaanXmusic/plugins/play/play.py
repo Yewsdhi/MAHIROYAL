@@ -3,7 +3,6 @@ import string
 
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
-from pyrogram.errors.exceptions.bad_request_400 import MessageIdInvalid
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
@@ -74,12 +73,11 @@ async def play_commnd(
         else None
     )
     if audio_telegram:
-        if audio_telegram.file_size > 104857600:
+        if audio_telegram.file_size > config.TG_AUDIO_FILESIZE_LIMIT:
             return await mystic.edit_text(_["play_5"])
-        duration_min = seconds_to_min(audio_telegram.duration)
         if (audio_telegram.duration) > config.DURATION_LIMIT:
             return await mystic.edit_text(
-                _["play_6"].format(config.DURATION_LIMIT_MIN, app.mention)
+                _["play_6"].format(seconds_to_min(config.DURATION_LIMIT), app.mention)
             )
         file_path = await Telegram.get_filepath(audio=audio_telegram)
         if await Telegram.download(_, message, mystic, file_path):
@@ -266,7 +264,7 @@ async def play_commnd(
             if duration_sec > config.DURATION_LIMIT:
                 return await mystic.edit_text(
                     _["play_6"].format(
-                        config.DURATION_LIMIT_MIN,
+                        seconds_to_min(config.DURATION_LIMIT),
                         app.mention,
                     )
                 )
@@ -288,35 +286,36 @@ async def play_commnd(
                 return await mystic.edit_text(err)
             return await mystic.delete()
         else:
-            try:
-                await Anony.stream_call(url)
-            except NoActiveGroupCall:
-                await mystic.edit_text(_["black_9"])
-                return await app.send_message(
-                    chat_id=config.LOGGER_ID,
-                    text=_["play_17"],
-                )
-            except Exception as e:
-                return await mystic.edit_text(_["general_2"].format(type(e).__name__))
-            await mystic.edit_text(_["str_2"])
-            try:
-                await stream(
-                    _,
-                    mystic,
-                    message.from_user.id,
-                    url,
-                    chat_id,
-                    message.from_user.first_name,
-                    message.chat.id,
-                    video=video,
-                    streamtype="index",
-                    forceplay=fplay,
-                )
-            except Exception as e:
-                ex_type = type(e).__name__
-                err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
-                return await mystic.edit_text(err)
-            return await play_logs(message, streamtype="M3u8 or Index Link")
+            return await mystic.edit_text("» ɴᴏᴛ ᴀ ᴠᴀʟɪᴅ url.\n\n<b>sᴜᴘᴘᴏʀᴛᴇᴅ urls :\nYoutube \nSpotify \nResso \n Apple \n SoundCloud </b> ")
+            # try:
+            #     await Siddu.stream_call(url)
+            # except NoActiveGroupCall:
+            #     await mystic.edit_text(_["black_9"])
+            #     return await app.send_message(
+            #         chat_id=config.LOGGER_ID,
+            #         text=_["play_17"],
+            #     )
+            # except Exception as e:
+            #     return await mystic.edit_text(_["general_2"].format(type(e).__name__))
+            # await mystic.edit_text(_["str_2"])
+            # try:
+            #     await stream(
+            #         _,
+            #         mystic,
+            #         message.from_user.id,
+            #         url,
+            #         chat_id,
+            #         message.from_user.first_name,
+            #         message.chat.id,
+            #         video=video,
+            #         streamtype="index",
+            #         forceplay=fplay,
+            #     )
+            # except Exception as e:
+            #     ex_type = type(e).__name__
+            #     err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
+            #     return await mystic.edit_text(err)
+            # return await play_logs(message, streamtype="M3u8 or Index Link")
     else:
         if len(message.command) < 2:
             buttons = botplaylist_markup(_)
@@ -339,7 +338,7 @@ async def play_commnd(
                 duration_sec = time_to_seconds(details["duration_min"])
                 if duration_sec > config.DURATION_LIMIT:
                     return await mystic.edit_text(
-                        _["play_6"].format(config.DURATION_LIMIT_MIN, app.mention)
+                        _["play_6"].format(seconds_to_min(config.DURATION_LIMIT), app.mention)
                     )
             else:
                 buttons = livestream_markup(
@@ -371,10 +370,7 @@ async def play_commnd(
         except Exception as e:
             ex_type = type(e).__name__
             err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
-            try:
-                return await mystic.edit_text(err)
-            except MessageIdInvalid:
-                return
+            return await mystic.edit_text(err)
         await mystic.delete()
         return await play_logs(message, streamtype=streamtype)
     else:
@@ -468,7 +464,7 @@ async def play_music(client, CallbackQuery, _):
         duration_sec = time_to_seconds(details["duration_min"])
         if duration_sec > config.DURATION_LIMIT:
             return await mystic.edit_text(
-                _["play_6"].format(config.DURATION_LIMIT_MIN, app.mention)
+                _["play_6"].format(seconds_to_min(config.DURATION_LIMIT), app.mention)
             )
     else:
         buttons = livestream_markup(
@@ -505,8 +501,8 @@ async def play_music(client, CallbackQuery, _):
     return await mystic.delete()
 
 
-@app.on_callback_query(filters.regex("AnonymousAdmin") & ~BANNED_USERS)
-async def anonymous_check(client, CallbackQuery):
+@app.on_callback_query(filters.regex("SiddumousAdmin") & ~BANNED_USERS)
+async def Siddumous_check(client, CallbackQuery):
     try:
         await CallbackQuery.answer(
             "» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ :\n\nᴏᴘᴇɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ sᴇᴛᴛɪɴɢs.\n-> ᴀᴅᴍɪɴɪsᴛʀᴀᴛᴏʀs\n-> ᴄʟɪᴄᴋ ᴏɴ ʏᴏᴜʀ ɴᴀᴍᴇ\n-> ᴜɴᴄʜᴇᴄᴋ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ ᴘᴇʀᴍɪssɪᴏɴs.",
@@ -516,7 +512,7 @@ async def anonymous_check(client, CallbackQuery):
         pass
 
 
-@app.on_callback_query(filters.regex("AnonyPlaylists") & ~BANNED_USERS)
+@app.on_callback_query(filters.regex("SidduPlaylists") & ~BANNED_USERS)
 @languageCB
 async def play_playlists_command(client, CallbackQuery, _):
     callback_data = CallbackQuery.data.strip()
@@ -664,4 +660,4 @@ async def slider_queries(client, CallbackQuery, _):
         )
         return await CallbackQuery.edit_message_media(
             media=med, reply_markup=InlineKeyboardMarkup(buttons)
-            )
+        )
