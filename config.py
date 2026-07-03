@@ -20,6 +20,10 @@ MONGO_DB_URI = getenv("MONGO_DB_URI", None)
 YTPROXY_URL = getenv("YTPROXY_URL", 'https://tgapi.xbitcode.com') ## xBit Music Endpoint.
 YT_API_KEY = getenv("YT_API_KEY" , None ) ## Your API key like: xbit_10000000xx0233 Get from  https://t.me/tgmusic_apibot
 
+# API_URL and API_KEY
+API_URL = "https://teaminflex.xyz"  # Change to your API server URL
+API_KEY = "INFLEX57434628D"
+
 DURATION_LIMIT = int(getenv("DURATION_LIMIT", 20000)) # 5 hours
 VIDEO_DURATION_LIMIT = int(getenv("VIDEO_DURATION_LIMIT", 20000)) # 5 hours
 
