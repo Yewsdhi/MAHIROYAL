@@ -9,24 +9,24 @@ from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
 from config import AYU, BANNED_USERS, lyrical
-from VIVAANXMUSIC import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from VIVAANXMUSIC.core.call import JARVIS
-from VIVAANXMUSIC.utils import seconds_to_min, time_to_seconds
-from VIVAANXMUSIC.utils.channelplay import get_channeplayCB
-from VIVAANXMUSIC.utils.decorators.language import languageCB
-from VIVAANXMUSIC.utils.decorators.play import PlayWrapper
-from VIVAANXMUSIC.utils.errors import capture_err, capture_callback_err
-from VIVAANXMUSIC.utils.formatters import formats
-from VIVAANXMUSIC.utils.inline import (
+from VivaanXmusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
+from VivaanXmusic.core.call import JARVIS
+from VivaanXmusic.utils import seconds_to_min, time_to_seconds
+from VivaanXmusic.utils.channelplay import get_channeplayCB
+from VivaanXmusic.utils.decorators.language import languageCB
+from VivaanXmusic.utils.decorators.play import PlayWrapper
+from VivaanXmusic.utils.errors import capture_err, capture_callback_err
+from VivaanXmusic.utils.formatters import formats
+from VivaanXmusic.utils.inline import (
     botplaylist_markup,
     livestream_markup,
     playlist_markup,
     slider_markup,
     track_markup,
 )
-from VIVAANXMUSIC.utils.logger import play_logs
-from VIVAANXMUSIC.utils.stream.stream import stream
-from VIVAANXMUSIC.utils.url_guard import is_safe_media_url
+from VivaanXmusic.utils.logger import play_logs
+from VivaanXmusic.utils.stream.stream import stream
+from VivaanXmusic.utils.url_guard import is_safe_media_url
 
 
 @app.on_message(
