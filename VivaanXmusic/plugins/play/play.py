@@ -281,9 +281,10 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
-                ex_type = type(e).__name__
-                err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
-                return await mystic.edit_text(err)
+    traceback.print_exc()
+    return await mystic.edit_text(
+        f"Exception: {type(e).__name__}\n\n{traceback.format_exc()}"
+    )
             return await mystic.delete()
         else:
             return await mystic.edit_text("» ɴᴏᴛ ᴀ ᴠᴀʟɪᴅ url.\n\n<b>sᴜᴘᴘᴏʀᴛᴇᴅ urls :\nYoutube \nSpotify \nResso \n Apple \n SoundCloud </b> ")
