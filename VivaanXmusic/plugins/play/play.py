@@ -6,22 +6,22 @@ from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from SHUKLAMUSIC import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from SHUKLAMUSIC.core.call import SHUKLA
-from SHUKLAMUSIC.utils import seconds_to_min, time_to_seconds
-from SHUKLAMUSIC.utils.channelplay import get_channeplayCB
-from SHUKLAMUSIC.utils.decorators.language import languageCB
-from SHUKLAMUSIC.utils.decorators.play import PlayWrapper
-from SHUKLAMUSIC.utils.formatters import formats
-from SHUKLAMUSIC.utils.inline import (
+from VivaanXmusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
+from VivaanXmusic.core.call import Siddu
+from VivaanXmusic.utils import seconds_to_min, time_to_seconds
+from VivaanXmusic.utils.channelplay import get_channeplayCB
+from VivaanXmusic.utils.decorators.language import languageCB
+from VivaanXmusic.utils.decorators.play import PlayWrapper
+from VivaanXmusic.utils.formatters import formats
+from VivaanXmusic.utils.inline import (
     botplaylist_markup,
     livestream_markup,
     playlist_markup,
     slider_markup,
     track_markup,
 )
-from SHUKLAMUSIC.utils.logger import play_logs
-from SHUKLAMUSIC.utils.stream.stream import stream
+from VivaanXmusic.utils.logger import play_logs
+from VivaanXmusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
 
 
