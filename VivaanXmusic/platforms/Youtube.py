@@ -6,6 +6,7 @@ import yt_dlp
 from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 from youtubesearchpython.future import VideosSearch
+from VivaanXmusic.platforms.Youtube import cookie_txt_file
 import aiohttp
 
 # API_URL and API_KEY
