@@ -13,8 +13,6 @@ API_URL = "https://teaminflex.xyz"  # Change to your API server URL
 API_KEY = "INFLEX57434628D"
 
 DOWNLOAD_DIR = "downloads"
-# Cookie file path
-cookie_txt_file = os.environ.get("COOKIE_FILE", "cookies.txt")
 
 def time_to_seconds(time):
     stringt = str(time)
