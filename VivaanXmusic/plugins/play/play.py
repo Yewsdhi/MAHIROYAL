@@ -8,9 +8,8 @@ from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from config import AYU, BANNED_USERS, lyrical
 from VivaanXmusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from VivaanXmusic.core.call import JARVIS
+from VivaanXmusic.core.call import Siddu
 from VivaanXmusic.utils import seconds_to_min, time_to_seconds
 from VivaanXmusic.utils.channelplay import get_channeplayCB
 from VivaanXmusic.utils.decorators.language import languageCB
