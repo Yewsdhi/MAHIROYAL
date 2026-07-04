@@ -20,7 +20,7 @@ def start_panel(_):
         ],
         [
             InlineKeyboardButton(
-                text="👑 Owner",
+                text="ᴏᴡɴᴇʀ",
                 url=config.OWNER_LINK,
                 style=ButtonStyle.SUCCESS,
             ),
@@ -47,7 +47,7 @@ def private_panel(_):
         ],
         [
             InlineKeyboardButton(
-                text="👑 Owner",
+                text="ᴏᴡɴᴇʀ",
                 url=config.OWNER_LINK,
                 style=ButtonStyle.SUCCESS,
             ),
