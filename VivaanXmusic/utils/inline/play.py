@@ -9,7 +9,7 @@ from VivaanXmusic.utils.formatters import time_to_seconds
 
 def _add_to_group_button():
     return InlineKeyboardButton(
-        text="ADD TO YOUR GROUP +",
+        text="⊚ ᴧᴅᴅ ᴍᴇ ᴛᴏ ʏᴏυʀ ᴄʜᴧᴛ ⊚",
         url=(
             f"https://t.me/{app.username}"
             "?startgroup=s&admin=delete_messages+manage_video_chats+pin_messages+invite_users+ban_user"
@@ -90,7 +90,7 @@ def stream_markup_timer(_, chat_id, played, dur):
         [_add_to_group_button()],
         [
         InlineKeyboardButton(
-            text="✘ Close",
+            text="✘ ᴄʟᴏsᴇ",
             callback_data="close",
             style=ButtonStyle.DANGER,
         ),
@@ -115,7 +115,7 @@ def stream_markup(_, chat_id):
         [_add_to_group_button()],
         [
         InlineKeyboardButton(
-            text="✘ Close",
+            text="✘ ᴄʟᴏsᴇ",
             callback_data="close",
             style=ButtonStyle.DANGER,
         ),
