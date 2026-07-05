@@ -11,9 +11,9 @@ from VivaanXmusic.misc import db
 from VivaanXmusic.utils.database import add_active_video_chat, is_active_chat
 from VivaanXmusic.utils.exceptions import AssistantErr
 from VivaanXmusic.utils.inline import aq_markup, close_markup, stream_markup
-from VivaanXmusic.utils.pastebin import AviaxBin
+from VivaanXmusic.utils.pastebin import SidduBin
 from VivaanXmusic.utils.stream.queue import put_queue, put_queue_index
-from VivaanXmusic.utils.thumbnails import gen_thumb
+from VivaanXmusic.utils.thumbnails import get_thumb
 
 
 async def stream(
