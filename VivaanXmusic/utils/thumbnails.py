@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 from unidecode import unidecode
 from youtubesearchpython.future import Video
 
-from BaddieXmusic import app
+from VivaanXmusic import app
 from config import YOUTUBE_IMG_URL
 
 
@@ -329,11 +329,11 @@ async def get_thumb(videoid, user_id):
         _paste_circle(background, xp, (416, 426, 526, 536))
 
         draw = ImageDraw.Draw(background)
-        arial = _font("BaddieXmusic/assets/font2.ttf", 28)
-        small = _font("BaddieXmusic/assets/font2.ttf", 24)
-        font = _font("BaddieXmusic/assets/font.ttf", 44)
-        title_font = _font("BaddieXmusic/assets/font.ttf", 48)
-        bot_name = unidecode(getattr(app, "name", "BaddieXmusic") or "BaddieXmusic")
+        arial = _font("VivaanXmusic/assets/font2.ttf", 28)
+        small = _font("VivaanXmusic/assets/font2.ttf", 24)
+        font = _font("VivaanXmusic/assets/font.ttf", 44)
+        title_font = _font("VivaanXmusic/assets/font.ttf", 48)
+        bot_name = unidecode(getattr(app, "name", "VivaanXmusic") or "VivaanXmusic")
 
         _draw_badge(background, (84, 94, 306, 140), "NOW PLAYING", small, fill=(236, 64, 122, 126))
         _draw_badge(background, (966, 18, 1220, 66), bot_name, arial)
