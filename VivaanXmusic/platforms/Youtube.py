@@ -19,8 +19,6 @@ from youtubesearchpython.future import VideosSearch
 from VivaanXmusic import LOGGER
 from VivaanXmusic.utils.formatters import time_to_seconds
 from config import (
-    WORKER_FALLBACK_API_KEY,
-    WORKER_FALLBACK_API_URL,
     YT_API_KEY,
     YTPROXY_URL as YTPROXY,
 )
