@@ -13,10 +13,10 @@ from pyrogram.enums import MessageEntityType
 from pyrogram.types import Message
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from py_yt import VideosSearch
-from SONALI_MUSIC import LOGGER
-from SONALI_MUSIC.utils.database import is_on_off
-from SONALI_MUSIC.utils.formatters import time_to_seconds
+from youtubesearchpython.future import VideosSearch
+from VivaanXmusic import LOGGER
+from VivaanXmusic.utils.database import is_on_off
+from VivaanXmusic.utils.formatters import time_to_seconds
 from config import YT_API_KEY, YTPROXY_URL as YTPROXY
 
 logger = LOGGER(__name__)
